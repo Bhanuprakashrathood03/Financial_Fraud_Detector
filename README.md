@@ -3,7 +3,7 @@ This AI tool uses a powerful Zephyr-7B language model and Retrieval-Augmented Ge
 # Interactive Financial Fraud Detector
 
 ## **This is how it looks initially in the Web Browser.**
-<img width="1440" height="819" alt="Screenshot 2025-08-26 at 11.49.32 AM" src="https://github.com/user-attachments/assets/4983fb9c-e4c8-4acc-aa7f-e2236e364a3c" />
+<img width="1440" height="819" alt="" src="https://github.com/user-attachments/assets/4983fb9c-e4c8-4acc-aa7f-e2236e364a3c" />
 
 
 An interactive tool that leverages a Large Language Model (LLM) with Retrieval-Augmented Generation (RAG) to analyze financial text and classify its potential for fraud. This project uses the `HuggingFaceH4/zephyr-7b-beta` model to provide risk assessment.
