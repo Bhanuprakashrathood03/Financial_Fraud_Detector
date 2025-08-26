@@ -1,0 +1,14 @@
+numpy
+pandas
+nltk
+langchain
+sentence-transformers
+faiss-cpu
+langchain-community
+langchain-core
+transformers
+chromadb
+torch
+huggingface_hub
+bitsandbytes
+accelerate
