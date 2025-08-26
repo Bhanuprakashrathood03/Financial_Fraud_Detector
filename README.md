@@ -62,6 +62,9 @@ Selected papers associated with the above figure.
 - **InvestLM :** InvestLM: A Large Language Model for Investment using Financial Domain Instruction Tuning. 2023. [Paper](https://arxiv.org/abs/2309.13064) | [Github](https://github.com/AbaciNLP/InvestLM)
 - **FinGPT :** FinGPT: Instruction Tuning Benchmark for Open-Source Large Language Models in Financial Datasets. *NeurIPS Workshop 2023*. [Paper](https://arxiv.org/abs/2310.04793) | [Github](https://github.com/AI4Finance-Foundation/FinGPT)| [HuggingFace](https://huggingface.co/FinGPT)
 
+<p align="center">
+	<img src="./2_summary.png" alt="FinLLMs" style="max-width: 100%;">	     
+</p>
 
 <p align="center"><img src="./img/2_summary.png" alt="2_summary.png" style="max-width: 100%;"></p>
 
