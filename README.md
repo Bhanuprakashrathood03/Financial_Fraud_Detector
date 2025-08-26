@@ -66,23 +66,25 @@ Selected papers associated with the above figure.
 	<img src="./2_summary.png" alt="FinLLMs" style="max-width: 100%;">	     
 </p>
 
-<p align="center"><img src="./img/2_summary.png" alt="2_summary.png" style="max-width: 100%;"></p>
-
 
 ## Techniques
 - [FinPLMs] Continual Pre-training **: FinBert-19**
-<p align="left"><img src="./img/techniques1.png" style="max-width: 70%;"></p>
+<p align="center">
+	<img src="./techniques1.png" alt="FinLLMs" style="max-width: 100%;">	     
+</p>
 
 - [FinPLMs] Domain-Specific Pre-training from Scratch  **: FinBERT-20**
 - [FinPLMs] Mixed-Domain Pre-training  **: FinBERT-21, FLANG**
 - [FinLLMs] Mixed-Domain LLM with Prompt Engineering **: BloombergGPT**
 - [FinLLMs] Instruction Fine-tuned LLM with Prompt Engineering **: FinMA, InvestLM, FinGPT**
-<p align="left"><img src="./img/3_techniques.png" style="max-width: 100%;"></p>
-
+<p align="center">
+	<img src="./techniques3.png" alt="FinLLMs" style="max-width: 100%;">	     
+</p>
 
 ## Benchmark Tasks and datasets  
-<p align="left"><img src="./img/4_radar.png" alt="eval_FinLLMs" style="max-width: 70%;"></p>
-
+<p align="center">
+	<img src="./4_radar.png" alt="FinLLMs" style="max-width: 100%;">	     
+</p>
 Evaluation summary of representative models across 6 financial NLP tasks
 - models : FinPLMs (FLANG), FinLLMs (BloombergGPT, FinMA), LLMs (ChatGPT, GPT-4), and task-specific state-of-the-art models (SOTA) models across 6 financial NLP tasks. 
 - FinPLMs did not perform experiments on the more complex tasks such as Hybrid QA, SMP or Summ; hence, these data points are not included.
