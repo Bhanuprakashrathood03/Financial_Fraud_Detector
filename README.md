@@ -118,18 +118,25 @@ Evaluation summary of representative models across 6 financial NLP tasks
 
 ### Evaluation details across 6 financial NLP tasks
 - Sentiment Analysis (SA)
-<p align="left"><img src="./img/table1.png" style="max-width: 40%;"></p>
+<p align="center">
+	<img src="./table1.png" alt="FinLLMs" style="max-width: 100%;">	     
+</p>
 - Text Classification (TC)
-<p align="left"><img src="./img/table2.png" style="max-width: 40%;"></p>
-- Named Entity Recognition (NER)
-<p align="left"><img src="./img/table3.png" style="max-width: 40%;"></p>
-- Question Answering (QA)
-<p align="left"><img src="./img/table4.png" style="max-width: 40%;"></p>
-- Stock Movement Prediction (SMP)
-<p align="left"><img src="./img/table5.png" style="max-width: 40%;"></p>
-- Text Summarization (Summ)
-<p align="left"><img src="./img/table6.png" style="max-width: 40%;"></p>
-
+<p align="center">
+	<img src="./table2.png" alt="FinLLMs" style="max-width: 100%;">	     
+</p>- Named Entity Recognition (NER)
+<p align="center">
+	<img src="./table3.png" alt="FinLLMs" style="max-width: 100%;">	     
+</p>- Question Answering (QA)
+<p align="center">
+	<img src="./table4.png" alt="FinLLMs" style="max-width: 100%;">	     
+</p>- Stock Movement Prediction (SMP)
+<p align="center">
+	<img src="./table5.png" alt="FinLLMs" style="max-width: 100%;">	     
+</p>- Text Summarization (Summ)
+<p align="center">
+	<img src="./table6.png" alt="FinLLMs" style="max-width: 100%;">	     
+</p>
 
 
 
