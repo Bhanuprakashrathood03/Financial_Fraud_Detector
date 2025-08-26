@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Financial Fraud Detection using LLM and RAG
-
-This script leverages Large Language Models (LLM) and Retrieval-Augmented 
-Generation (RAG) to identify potential fraud in financial data.
-"""
 
 import os
 import re
