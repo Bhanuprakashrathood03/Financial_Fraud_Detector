@@ -1,38 +1,40 @@
 # Interactive Financial Fraud Detector
 ![image alt](https://github.com/Bhanuprakashrathood03/Financial_Fraud_Detector/blob/56bec6820794d15d814886976dcca9568bbe431f/app-screenshot.jpg)
-An interactive tool that leverages a Large Language Model (LLM) with **Retrieval-Augmented Generation (RAG)** to analyze financial text and classify its potential for fraud. This project uses the `HuggingFaceH4/zephyr-7b-beta` model to provide a risk assessment with justification.
+
+An interactive tool that leverages a Large Language Model (LLM) with a **Chroma RAG** pipeline to analyze financial text and classify its potential for fraud. This project uses the `HuggingFaceH4/zephyr-7b-beta` model to provide a risk assessment with a clear justification.
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![LangChain](https://img.shields.io/badge/LangChain-0.1-green.svg)](https://www.langchain.com/)
+[![ChromaDB](https://img.shields.io/badge/VectorDB-Chroma-orange.svg)](https://www.trychroma.com/)
 
 ---
 ## ## Features
 
-* **LLM-Powered Analysis**: Utilizes the 7-billion parameter Zephyr-7B-Beta model for nuanced text analysis.
-* **RAG for Context**: Enhances accuracy by retrieving relevant examples from a vector database before making a prediction, reducing hallucinations.
-* **Interactive UI**: Includes an intuitive Streamlit interface for easy text submission and analysis.
+* **LLM-Powered Analysis**: Utilizes the powerful 7-billion parameter Zephyr-7B-Beta model for nuanced financial text analysis.
+* **Chroma RAG Pipeline**: Enhances accuracy by retrieving relevant examples from a **ChromaDB** vector store before making a prediction. This grounds the model in facts, reducing hallucinations.
+* **Interactive UI**: Includes an intuitive Streamlit interface for easy text submission and real-time analysis.
 * **Command-Line Interface**: Retains the original CLI for backend testing and scripted use.
-* **Persistent Knowledge Base**: Uses ChromaDB to create and store a vector database of financial statements on first run.
+* **Persistent Knowledge Base**: On first run, it automatically builds and saves a ChromaDB vector database of financial statements for long-term use.
 
 ---
-## ## How It Works
+## ## How the Chroma RAG System Works
 
 The system follows a Retrieval-Augmented Generation (RAG) pipeline to ensure accurate, context-aware analysis:
 
-1.  **Data Ingestion**: On the first run, the system generates a synthetic dataset of fraudulent and non-fraudulent financial statements from `fraud_detector_app.py`.
-2.  **Vector Store Creation**: This data is cleaned, processed, and embedded into a **ChromaDB** vector store. This vector store acts as the system's specialized knowledge base.
+1.  **Data Ingestion**: On the first run, the system generates a synthetic dataset of fraudulent and non-fraudulent financial statements using the logic in `fraud_detector_app.py`.
+2.  **Vector Store Creation**: This data is cleaned, processed, and embedded into a **ChromaDB** vector store, which is persisted in the `docs/chroma_rag/` directory. This vector store acts as the system's specialized, long-term memory.
 3.  **User Query**: A user submits a piece of financial text for analysis.
-4.  **Document Retrieval**: The system searches the ChromaDB store to find the most semantically similar financial statement (the "context").
-5.  **LLM Prompting**: The user's text (as the "question") and the retrieved document (as the "context") are passed to the Zephyr-7B LLM with a specialized prompt, asking it to classify the fraud risk and provide justification.
+4.  **Document Retrieval**: The system queries the ChromaDB store to find the most semantically similar financial statement (the "context").
+5.  **LLM Prompting**: The user's text (the "question") and the retrieved document (the "context") are combined into a prompt and sent to the Zephyr-7B LLM. The model is instructed to classify the fraud risk based *only* on the provided context.
 
 ---
 ## ## Technology Stack
 
 * **LLM & NLP**: LangChain, Hugging Face Transformers, PyTorch, NLTK
 * **Vector Database**: ChromaDB
-* **Web Framework**: Streamlit
-* **Core Libraries**: Pandas, NumPy, Scikit-learn
+* **Web Framework**: Streamlit (Optional UI)
+* **Core Libraries**: Pandas, NumPy, Scikit-learn, BitsAndBytes
 
 ---
 ## ## Getting Started
@@ -53,11 +55,10 @@ The system follows a Retrieval-Augmented Generation (RAG) pipeline to ensure acc
     ```
 
 2.  **Set up your Hugging Face Token:**
-    For seamless authentication, create a file named `.env` in the project's root directory and add your token:
+    Create a file named `.env` in the project's root directory and add your token to it. This allows the application to download the model securely.
     ```
     HUGGING_FACE_HUB_TOKEN="hf_YourAccessTokenHere"
     ```
-    The `transformers` library will automatically detect and use this token.
 
 3.  **Create a virtual environment and install dependencies:**
     ```bash
@@ -73,15 +74,16 @@ The system follows a Retrieval-Augmented Generation (RAG) pipeline to ensure acc
     pip install -r requirements.txt
     ```
 
-4.  **First Run**: The first time you run the application, it will automatically download the necessary NLTK data and create the ChromaDB vector store in the `docs/chroma_rag/` directory. This may take a few minutes.
+4.  **First Run**: The first time you run the application, it will automatically download the LLM and NLTK data, and then build the ChromaDB vector store. This may take several minutes and require a significant amount of disk space.
 
 ### ### Usage
 
 You can run the application in two ways:
 
 1.  **With the Streamlit Web Interface (Recommended):**
+    *Create a file named `streamlit_app.py` and add your Streamlit code.*
     ```bash
-    streamlit run your_streamlit_app_name.py
+    streamlit run streamlit_app.py
     ```
     Navigate to the local URL provided by Streamlit (usually `http://localhost:8501`).
 
@@ -96,12 +98,14 @@ You can run the application in two ways:
 
 ```
 .
-├── 📂 docs/chroma_rag/      # Persisted ChromaDB vector store
-├── 🐍 fraud_detector_app.py # Core logic for RAG pipeline and CLI
-├──  streamlit_app.py      # (Your Streamlit UI file)
-├── 📋 requirements.txt      # Python dependencies
-├── 📄 .env                  # For storing your Hugging Face token
-└──  README.md               # This file
+├── 📂 assets/
+│   └── 🖼️ app-screenshot.jpg  # Screenshot for README
+├── 📂 docs/chroma_rag/         # Persisted ChromaDB vector store
+├── 🐍 fraud_detector_app.py    # Core logic for Chroma RAG pipeline and CLI
+├──  streamlit_app.py         # Your Streamlit UI file (you create this)
+├── 📋 requirements.txt         # Python dependencies
+├── 📄 .env                     # For storing your Hugging Face token
+└──  README.md                  # This file
 ```
 
 ---
