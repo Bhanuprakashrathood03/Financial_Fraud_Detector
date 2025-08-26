@@ -1,110 +1,110 @@
-# Financial_Fraud_Detector
-This AI tool uses a powerful Zephyr-7B language model and Retrieval-Augmented Generation (RAG) to detect potential financial fraud. Paste any financial statement, and it will instantly classify the fraud risk as High, Low, or Indeterminate.
-
 # Interactive Financial Fraud Detector
-![image alt](https://github.com/Bhanuprakashrathood03/Financial_Fraud_Detector/blob/bdf235a893658c993dd1bc93242fc4348ae553f3/app-screenshot.jpg)
-
-An interactive tool that leverages a Large Language Model (LLM) with Retrieval-Augmented Generation (RAG) to analyze financial text and classify its potential for fraud. This project uses the `HuggingFaceH4/zephyr-7b-beta` model to provide risk assessment.
+![image alt](https://github.com/Bhanuprakashrathood03/Financial_Fraud_Detector/blob/56bec6820794d15d814886976dcca9568bbe431f/app-screenshot.jpg)
+An interactive tool that leverages a Large Language Model (LLM) with **Retrieval-Augmented Generation (RAG)** to analyze financial text and classify its potential for fraud. This project uses the `HuggingFaceH4/zephyr-7b-beta` model to provide a risk assessment with justification.
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.25+-red.svg)](https://streamlit.io)
+[![LangChain](https://img.shields.io/badge/LangChain-0.1-green.svg)](https://www.langchain.com/)
 
 ---
+## ## Features
 
-## 📋 Features
-
-* **LLM-Powered Analysis**: Uses a 7-billion parameter language model for nuanced financial text analysis.
-* **RAG for Context**: Enhances accuracy by retrieving relevant examples from a vector database before making a prediction.
-* **Interactive UI**: A user-friendly Streamlit interface for easy text submission and analysis.
-* **Example Loading**: Quickly load examples of suspicious and non-suspicious text to see the tool in action.
+* **LLM-Powered Analysis**: Utilizes the 7-billion parameter Zephyr-7B-Beta model for nuanced text analysis.
+* **RAG for Context**: Enhances accuracy by retrieving relevant examples from a vector database before making a prediction, reducing hallucinations.
+* **Interactive UI**: Includes an intuitive Streamlit interface for easy text submission and analysis.
 * **Command-Line Interface**: Retains the original CLI for backend testing and scripted use.
+* **Persistent Knowledge Base**: Uses ChromaDB to create and store a vector database of financial statements on first run.
 
 ---
+## ## How It Works
 
-## ⚙️ How It Works
+The system follows a Retrieval-Augmented Generation (RAG) pipeline to ensure accurate, context-aware analysis:
 
-The system follows a Retrieval-Augmented Generation (RAG) pipeline:
-
-1.  **Synthetic Data**: On first run, a synthetic dataset of fraudulent and non-fraudulent financial statements is generated.
-2.  **Vector Store Creation**: This data is cleaned, processed, and stored in a `ChromaDB` vector store using `HuggingFaceEmbeddings`. This vector store acts as the long-term memory for the RAG system.
-3.  **User Query**: A user submits a piece of financial text through the UI.
+1.  **Data Ingestion**: On the first run, the system generates a synthetic dataset of fraudulent and non-fraudulent financial statements from `fraud_detector_app.py`.
+2.  **Vector Store Creation**: This data is cleaned, processed, and embedded into a **ChromaDB** vector store. This vector store acts as the system's specialized knowledge base.
+3.  **User Query**: A user submits a piece of financial text for analysis.
 4.  **Document Retrieval**: The system searches the ChromaDB store to find the most semantically similar financial statement (the "context").
-5.  **LLM Prompting**: The user's text (as the "question") and the retrieved document (as the "context") are passed to the Zephyr-7B LLM using a specialized prompt.
-6.  **Classification & Justification**: The LLM analyzes the information and classifies the text as "High Risk," "Low Risk," or "Indeterminate Risk," providing a brief justification for its decision based on the provided context.
+5.  **LLM Prompting**: The user's text (as the "question") and the retrieved document (as the "context") are passed to the Zephyr-7B LLM with a specialized prompt, asking it to classify the fraud risk and provide justification.
 
 ---
+## ## Technology Stack
 
-## 🚀 Getting Started
+* **LLM & NLP**: LangChain, Hugging Face Transformers, PyTorch, NLTK
+* **Vector Database**: ChromaDB
+* **Web Framework**: Streamlit
+* **Core Libraries**: Pandas, NumPy, Scikit-learn
 
-### Prerequisites
+---
+## ## Getting Started
+
+### ### Prerequisites
 
 * Python 3.9 or higher
-* An NVIDIA GPU with CUDA support is highly recommended for running the model locally.
+* Git
+* An NVIDIA GPU with CUDA support is **highly recommended** for running the model locally.
 * A Hugging Face account and an [Access Token](https://huggingface.co/settings/tokens) with at least `read` permissions.
 
-### Installation
+### ### Installation
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repo-url>
-    cd <your-repo-directory>
+    git clone <your-repository-url>
+    cd <repository-name>
     ```
 
 2.  **Set up your Hugging Face Token:**
-    Create a file named `.env` in the root of the project directory and add your token to it:
+    For seamless authentication, create a file named `.env` in the project's root directory and add your token:
     ```
     HUGGING_FACE_HUB_TOKEN="hf_YourAccessTokenHere"
     ```
-    The application will load this token automatically.
+    The `transformers` library will automatically detect and use this token.
 
-3.  **Run the setup script:**
-    This script will create a virtual environment, install all required dependencies, and download necessary NLTK data.
+3.  **Create a virtual environment and install dependencies:**
     ```bash
-    bash setup.sh
+    # Create a virtual environment
+    python -m venv venv
+
+    # Activate it (Linux/macOS)
+    source venv/bin/activate
+    # Or on Windows
+    # venv\Scripts\activate
+
+    # Install all required packages
+    pip install -r requirements.txt
     ```
 
-### Usage
+4.  **First Run**: The first time you run the application, it will automatically download the necessary NLTK data and create the ChromaDB vector store in the `docs/chroma_rag/` directory. This may take a few minutes.
 
-Once the installation is complete, you can run the application in two ways:
+### ### Usage
+
+You can run the application in two ways:
 
 1.  **With the Streamlit Web Interface (Recommended):**
     ```bash
-    streamlit run streamlit_app.py
+    streamlit run your_streamlit_app_name.py
     ```
-    Navigate to the local URL provided by Streamlit (usually `http://localhost:8501`) in your web browser.
+    Navigate to the local URL provided by Streamlit (usually `http://localhost:8501`).
 
 2.  **With the Command-Line Interface:**
     ```bash
     python fraud_detector_app.py
     ```
+    Follow the prompts in your terminal to enter text for analysis.
 
 ---
-
-## 📂 File Structure
+## ## File Structure
 
 ```
 .
-├── docs/chroma_rag/      # Directory for the persisted ChromaDB vector store
-├── .env                  # For storing your Hugging Face API token
-├── fraud_detector_app.py # Core logic for data processing, RAG pipeline, and CLI
-├── streamlit_app.py      # The Streamlit user interface
-├── requirements.txt      # Python dependencies
-├── setup.sh              # Bash script for easy setup
-└── README.md             # This file
+├── 📂 docs/chroma_rag/      # Persisted ChromaDB vector store
+├── 🐍 fraud_detector_app.py # Core logic for RAG pipeline and CLI
+├──  streamlit_app.py      # (Your Streamlit UI file)
+├── 📋 requirements.txt      # Python dependencies
+├── 📄 .env                  # For storing your Hugging Face token
+└──  README.md               # This file
 ```
 
 ---
+## ## License
 
-## 🛠️ Technology Stack
-
-* **LLM & NLP**: `LangChain`, `Hugging Face Transformers`, `PyTorch`
-* **Vector Database**: `ChromaDB`, `FAISS`
-* **Web Framework**: `Streamlit`
-* **Data Handling**: `Pandas`, `NumPy`
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
