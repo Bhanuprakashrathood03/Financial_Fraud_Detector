@@ -1,7 +1,7 @@
 <h1 align="center">Large Language Models in Finance (FinLLMs)</h1>
 
 <p align="center">
-	<img src="./img/1_timeline.png" alt="FinLLMs" style="max-width: 100%;">	     
+	<img src="./1_timeline.png" alt="FinLLMs" style="max-width: 100%;">	     
 </p>
 
 A curated list of resources of LLMs in Finance (FinLLMs) including their history, techniques, evaluation, and opportunities and challenges. It's based on our survey paper: [A Survey of Large Language Models in Finance (FinLLMs)](https://arxiv.org/abs/2402.02315) (preprint), accepted at [Neural Computing and Applications 2025](https://link.springer.com/article/10.1007/s00521-024-10495-6). This survey will be actively updated, including further evaluation of advanced Financial NLP tasks, a collection of financial datasets, and sharing FinLLM use-cases. Please stay tuned!🔥
