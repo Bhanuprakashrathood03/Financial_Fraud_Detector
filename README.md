@@ -78,7 +78,7 @@ Selected papers associated with the above figure.
 - [FinLLMs] Mixed-Domain LLM with Prompt Engineering **: BloombergGPT**
 - [FinLLMs] Instruction Fine-tuned LLM with Prompt Engineering **: FinMA, InvestLM, FinGPT**
 <p align="center">
-	<img src="./techniques3.png" alt="FinLLMs" style="max-width: 100%;">	     
+	<img src="./3_techniques.png" alt="FinLLMs" style="max-width: 100%;">	     
 </p>
 
 ## Benchmark Tasks and datasets  
